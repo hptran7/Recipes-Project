@@ -1,0 +1,17 @@
+{
+  "name": "recipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mustache-express": "^1.3.0",
+    "pg": "^8.4.2",
+    "sequelize": "^6.3.5"
+  }
+}
