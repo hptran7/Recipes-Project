@@ -5,10 +5,29 @@
 <body>
     <h1>hello</h1>
 </body>
+<div id ="searchBar">
+<form method = "POST" action="/find-recipe">
+<input type ="text" placeholder="Please enter your dish" name="recipeSearch"></input>
+<button>SEARCH</button>
+</form>
+</div>
 <ul>
 {{#recipes}}
-<li>{{label}}</li>
+<li>
 
+<img src={{recipe.image}}></img> 
+<p>{{recipe.label}}</p>
+<p>{{recipe.ingredientLines}}</p>
+<p>Total Time: {{recipe.totalTime}}</p>
+<form method="POST" action="/add-recipe">
+<input value={{recipe.image}} type="hidden" name="image"></input>
+<input value={{recipe.label}} type="hidden" name="label"></input>
+<input value={{recipe.ingredientLines}} type="hidden" name="ingredients"></input>
+<input value={{recipe.totalTime}} type="hidden" name="cookTime"></input>
+<button>Submit</button>
+
+</form>
+</li>
 {{/recipes}}
 </ul>
 
