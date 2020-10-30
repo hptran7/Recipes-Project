@@ -1,6 +1,7 @@
 const express = require('express')
 const app= express()
 const mustacheExpress = require('mustache-express')
+const axios = require('axios')
 
 app.use(express.urlencoded())
 
@@ -9,7 +10,8 @@ app.set('views','./views')
 app.set('view engine','mustache')
 
 
-app.get('/',(req,res)=>{
+app.get('/',async(req,res)=>{
+    const resultData = await axios.get('')
     res.render('index')
 })
 
