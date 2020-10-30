@@ -1,0 +1,27 @@
+body {
+    font-family: 'Grandstander', cursive;
+    display: flex;
+    flex-direction: column;
+    /* background: radial-gradient(#a9faa2, #f5e7c0); */
+    background-image: url('kitchen.jpg');
+    size: 100%;
+}
+
+h1 {
+    margin: 0 auto;
+    text-decoration: underline;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+#loginInBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#registerAcct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

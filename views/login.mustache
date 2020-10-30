@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+
+    <body>
+        <h1>Recipe Box Login Page</h1>
+        
+        <form method="POST" action="/login">
+        <div class="loginInBar">
+        <input type="text" placeholder="Username" name="username" />
+        <input type="password" placeholder="Password" name="password" />
+        <button name="loginButton">Login</button>
+        </form>
+        </div>
+         <div class="registerAcct">
+        <a href="/register">
+        <button name="registerButton">Register for a Recipe Box Account</button></a>
+        </div>
+
+        {{message}}
+
+    </body>
+
+</html>
