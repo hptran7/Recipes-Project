@@ -14,6 +14,9 @@ module.exports = {
       cook_time: {
         type: Sequelize.STRING
       },
+      course: {
+        type: Sequelize.STRING
+      },
       url: {
         type: Sequelize.STRING
       },
@@ -28,9 +31,6 @@ module.exports = {
       },
       notes: {
         type: Sequelize.TEXT
-      },
-      user_id: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

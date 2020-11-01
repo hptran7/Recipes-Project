@@ -25,3 +25,36 @@ h1 {
     flex-direction: column;
     align-items: center;
 }
+
+#addRecipeBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0 auto;
+}
+
+#miniRecipeBar {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px
+}
+
+#miniRecipeBar2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px
+}
+
+ul {
+    margin-left: 15%;
+    flex-direction: column;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+#displayRecipesBar {
+    display: flex;
+}

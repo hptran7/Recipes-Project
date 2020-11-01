@@ -24,14 +24,20 @@ app.use(session({
 // all routes going to /trips will be handled by tripsRouter 
 app.use('/trips',authenticate,tripsRoutes)
 
-app.get('/trips', authenticate, (req, res) => {
-    res.render('trips', { allTrips: trips })
-})
 */
 
 app.engine('mustache',mustacheExpress())
 app.set('views','./views')
 app.set('view engine','mustache')
+
+
+app.get('/mypage', (req,res) => {
+    models.Recipe.findAll()
+    .then((recipes) =>{
+        console.log(recipes)
+        res.render('mypage', {recipes: recipes})
+    })
+})
 
 
 // app.get('/',async(req,res)=>{
@@ -50,8 +56,7 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/mypage', authenticate, (req, res) => {
-    res.render('mypage')
-    // res.render('trips', { allTrips: trips })
+    res.render('mypage', {recipes: recipes})
 })
 
 app.post('/register', async(req, res) => {
@@ -127,6 +132,57 @@ function authenticate(req, res, next) {
             }
         }
     }
+
+app.post('/add-recipe', async (req,res) => {
+
+    const title = req.body.title
+    const cook_time = req.body.cook_time
+    const course = req.body.course
+    const url = req.body.url
+    const picture = req.body.picture
+    const ingredients = req.body.ingredients
+    const directions = req.body.directions
+    const notes = req.body.notes
+    // const user_id = req.body.user_id
+    
+    //Building recipe object:
+    let recipe = await
+    models.Recipe.build ({
+        title: title,
+        cook_time: cook_time,
+        course: course,
+        url: url,
+        picture: picture,
+        ingredients: ingredients,
+        directions: directions,
+        notes: notes,
+        // user_id: user_id      
+    })
+    // Saving recipe object to the Recipe Datsbase
+    await recipe.save().then((savedRecipe) => {
+        console.log('saved')
+        res.render('mypage', savedRecipe.dataValues)
+    }).catch((error) => {
+        res.render('error')
+    })
+})
+
+app.post('/delete-recipe',(req,res) => {
+    const recipeId = req.body.recipeId
+
+    models.Recipe.destroy ({
+        where: {
+            id: recipeId
+        }
+    }).then(deletedRecipe => {
+        console.log(deletedRecipe)
+        res.redirect('/mypage')
+    })
+})
+
+/*
+
+*/
 
 
 
