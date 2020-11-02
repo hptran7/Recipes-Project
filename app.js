@@ -96,15 +96,34 @@ app.post('/register', async(req, res) => {
 })
 
 app.get('/',async(req,res)=>{
-    const resultData = await axios.get('https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=8&apiKey=aeaea5163d2a46529d7c282344fc87d5')
-    console.log(resultData.data.results)
+    const resultData = await axios.get('https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=16&apiKey=aeaea5163d2a46529d7c282344fc87d5')
+    res.render('index',{recipes:resultData.data.results})
+})
+
+app.post('/recipe-search',async(req,res)=>{
+    let recipeSearch = req.body.recipeSearch
+    const resultData = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${recipeSearch}&number=16&apiKey=aeaea5163d2a46529d7c282344fc87d5`)
     res.render('index',{recipes:resultData.data.results})
 })
 
 app.get('/:recipeid',async(req,res)=>{
     let recipeId = req.params.recipeid
-    // const recipeInstruction = await axios.get()
-    res.render('recipeDetail')
+    const recipeDetail = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=aeaea5163d2a46529d7c282344fc87d5&includeNutrition=true`)
+    let extendedIngredientsDetail = recipeDetail.data.extendedIngredients
+    let ingredients = extendedIngredientsDetail.map((ingredient)=>{
+        return ingredient.originalString
+    })
+    let ingredientsString= ingredients.join(" ")
+    const ingredientObject ={
+        title:recipeDetail.data.title,
+        image:recipeDetail.data.image,
+        cooktime:recipeDetail.data.readyInMinutes,
+        course:recipeDetail.data.dishTypes[0],
+        ingredient:ingredientsString,
+        instruction: recipeDetail.data.instructions
+    }
+    console.log(ingredientObject)
+    res.render('recipeDetail',ingredientObject)
 })
 
 app.post('/login', async(req, res) => {

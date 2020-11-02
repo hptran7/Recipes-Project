@@ -112,3 +112,37 @@ button[name="deleteRecipeButton"] {
     height: 30px;
     margin-top: 20px;
 }
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1em ;
+}
+.grid-card{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 1em;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.recipe-txt{
+    height:50px;
+    padding: 10px;
+    border:none;
+    border-radius:  25px;
+    outline: none;
+}
+.search-btn{
+    height: 50px;
+    width: 150px;
+    background: #ffeb3b;
+    border:none;
+    color:#000;
+    border-radius: 25px;
+}
+.form-box{
+    justify-content: center;
+}
