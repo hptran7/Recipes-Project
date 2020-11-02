@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/styles2.css">
+    </head>
+
+    <body>
+        <h1>My Recipe Box</h1>
+        <div class="surprise">{{message2}}
+            <form method="POST" action="/sign-out">
+            <button name="signOutButton">Sign Out</button>
+            </form>
+        </div>
+
+
+        <form method="POST" action="/add-recipe">
+            <div id="addRecipeBar">
+                <div id="miniRecipeBar">
+                        <input type="text" placeholder="Title" name="title" />
+                        <input type="text" placeholder="Cook Time" name="cook_time" />
+                        <input type="text" placeholder="Course" name="course" />
+                        <input type="text" placeholder="Recipe URL" name="url" />
+                        <input type="text" placeholder="Recipe Photo" name="picture" />
+                    </div>
+                    <div id="miniRecipeBar2">
+                        <textarea type="text" placeholder="Ingredients" name="ingredients" rows="10" cols="40"></textarea>
+                        <textarea type="text" placeholder="Directions" name="directions" rows="10" cols="80"></textarea>
+                        <textarea type="text" placeholder="Notes" name="notes" rows="10" cols="20"></textarea>
+                        <button name="addRecipeButton">Add Recipe to My Recipe Box</button>
+                        <input type="hidden" value="{{user_id}}" name="user_id" />
+                    </div>
+                </form>
+            </div>
+<a href="/mypage">Return to Home</a>
+
+ </body>
+
+</html>
