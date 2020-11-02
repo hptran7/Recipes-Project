@@ -7,7 +7,11 @@
 </body>
 <ul>
 {{#recipes}}
-<li>{{label}}</li>
+<li>
+<h3>{{title}}</h3>
+<img src="{{image}}"></img>
+<a href="http://localhost:3000/{{id}}">Detail</a>
+</li>
 
 {{/recipes}}
 </ul>
