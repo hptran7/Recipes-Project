@@ -1,11 +1,17 @@
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/styles.css">
+        <link rel="stylesheet" href="/styles2.css">
     </head>
 
     <body>
         <h1>My Recipe Box</h1>
+        <div class="surprise">{{message2}}
+            <form method="POST" action="/sign-out">
+            <button name="signOutButton">Sign Out</button>
+            </form>
+        </div>
+
 
         <form method="POST" action="/add-recipe">
             <div id="addRecipeBar">
@@ -30,7 +36,7 @@
         {{#recipes}}
 
             <li>
-            <form method="POST" action="/delete-recipe">
+            <form name="form2" method="POST" action="/delete-recipe">
                 <div id="displayRecipesBar">
                     <p><b><i>{{title}}</i></b> - <b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: {{course}}</b></p>
                     <button name="deleteRecipeButton">Delete Recipe</button>

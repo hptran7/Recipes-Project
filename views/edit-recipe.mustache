@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/styles.css">
+    </head>
+
+    <body>
+        <h1>My Family Bookshelf</h1>
+
+        <form method="POST" action="/edit-recipe/{{id}}">    
+            <div id="addRecipeBar">
+                <div id="miniRecipeBar">
+                        <input type="text" placeholder="Title" name="title" />
+                        <input type="text" placeholder="Cook Time" name="cook_time" />
+                        <input type="text" placeholder="Course" name="course" />
+                        <input type="text" placeholder="Recipe URL" name="url" />
+                        <input type="text" placeholder="Recipe Photo" name="picture" />
+                    </div>
+                    <div id="miniRecipeBar2">
+                        <textarea type="text" placeholder="Ingredients" name="ingredients" rows="10" cols="40"></textarea>
+                        <textarea type="text" placeholder="Directions" name="directions" rows="10" cols="80"></textarea>
+                        <textarea type="text" placeholder="Notes" name="notes" rows="10" cols="20"></textarea>
+                        <button name="editRecipeButton">Edit Recipe</button>
+                        <input type="hidden" value="{{recipeId}}" name="recipeId" />
+                </div>
+        </form>
+        <a href="/mypage">Return to Home</a>
+            </div>
+
+    </body>
+
+</html>

@@ -59,6 +59,16 @@ app.get('/mypage', authenticate, (req, res) => {
     res.render('mypage', {recipes: recipes})
 })
 
+app.get('/edit-recipe/:recipeId', (req,res) => {
+    const recipeId = req.params.recipeId
+    console.log(recipeId)
+    res.render('edit-recipe', {recipeId: recipeId})
+})
+
+/*
+
+*/
+
 app.post('/register', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
@@ -111,9 +121,9 @@ app.post('/login', async(req, res) => {
                 req.session.isAuthenticated = true
                 req.session.username = username
 
-                res.redirect('/mypage')
+                res.redirect('/mypage' /*, { message2: `Welcome ${username}!` }*/)
             } else {
-                res.redirect('/error')
+                res.redirect('/error' /*, { message: 'Username or password is incorrect' }*/)
             }
         }
     }) 
@@ -132,6 +142,16 @@ function authenticate(req, res, next) {
             }
         }
     }
+
+app.post('/sign-out', (req,res) => {
+    const signOutButton = req.body.signOutButton
+
+    let signOut = req.session.destroy
+    console.log(signOut)
+    signOut
+
+    res.redirect('login')
+})
 
 app.post('/add-recipe', async (req,res) => {
 
@@ -180,11 +200,41 @@ app.post('/delete-recipe',(req,res) => {
     })
 })
 
+app.post('/edit-recipe', (req,res) => {
+    const recipeId = req.body.recipeId
+
+    const title = req.body.title
+    const cook_time = req.body.cook_time
+    const course = req.body.course
+    const url = req.body.url
+    const picture = req.body.picture
+    const ingredients = req.body.ingredients
+    const directions = req.body.directions
+    const notes = req.body.notes
+
+    models.Recipe.update({
+        title: title,
+        cook_time: cook_time,
+        course: course,
+        url: url,
+        picture: picture,
+        ingredients: ingredients,
+        directions: directions,
+        notes: notes,
+    }, {
+        where: {
+            id: recipeId
+        }
+    }).then(updatedRecipe => {
+        console.log(updatedRecipe)
+        res.redirect('/mypage')
+    })
+
+})
+
 /*
 
 */
-
-
 
 app.listen(3000,()=>{
     console.log('Server Is Running')
