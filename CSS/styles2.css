@@ -143,3 +143,6 @@ button[name="deleteRecipeButton"] {
     color:#000;
     border-radius: 25px;
 }
+.form-box{
+    justify-content: center;
+}

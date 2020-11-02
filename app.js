@@ -123,6 +123,8 @@ app.get('/:recipeid',async(req,res)=>{
     const ingredientObject ={
         title:recipeDetail.data.title,
         image:recipeDetail.data.image,
+        cooktime:recipeDetail.data.readyInMinutes,
+        course:recipeDetail.data.dishTypes[0],
         ingredient:ingredientsString,
         instruction: recipeDetail.data.instructions
     }
