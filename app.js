@@ -124,7 +124,7 @@ app.get('/:recipeid',async(req,res)=>{
         title:recipeDetail.data.title,
         image:recipeDetail.data.image,
         cooktime:recipeDetail.data.readyInMinutes,
-        course:recipeDetail.data.dishTypes[0],
+        course:recipeDetail.data,
         ingredient:ingredientsString,
         instruction: recipeDetail.data.instructions
     }
