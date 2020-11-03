@@ -7,16 +7,25 @@
 
     <body>
 
-            <h1>{{title}}</h1>
-            <img src={{picture}} width="500px" height="400px">
-            <p>Cook Time: {{cook_time}}</p>
-            <p>Course: {{course}}</p>
-            {{url}}
-            <p>{{ingredients}}</p>
-            <p>{{directions}}</p>
-            <p>{{notes}}</p>
+        <div id="RecipeDetailsBox">
+            <div id="detailRecipeBar">
+                <h1>{{title}}</h1>
+                    {{#picture}}
+                        <img name="image" src = "{{picture}}" width="50%" height="60%"/>
+                    {{/picture}}
+                    {{^picture}}
+                        <img src="/default.jpg" width="50%" height="60%"/>
+                    {{/picture}}
+                    <div id="miniDetailRecipeBar">
+                        <p>Cook Time: {{cook_time}}</p> - <p>Course: {{course}}</p> - <p>Recipe URL: {{url}}</p>
+                    </div>
+                <p>{{ingredients}}</p>
+                <p>{{directions}}</p>
+                <p>{{notes}}</p>
+                <a href="/mypage">Return to Home</a>
+            </div>
+        </div>
 
-<a href="/mypage">Return to Home</a>
 
     </body>
 
