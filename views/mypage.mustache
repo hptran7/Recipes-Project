@@ -7,40 +7,45 @@
     <body>
         <h1>My Recipe Box</h1>
 
-        <div class="surprise">{{message2}}
-            <form method="POST" action="/sign-out">
-                <button name="signOutButton">Sign Out</button>
-            </form>
+        <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="/add-recipe">Add a Recipe</a>
+                <a href="/filter-course">Search for Recipes by Course</a>
+                <form method="POST" action="/sign-out">
+                    <button name="signOutButton">Sign Out</button>
+                </form>
+             </div>
         </div>
-        <a href="/add-recipe">Add a Recipe</a>
-        <a href="/filter-course">Search for Recipes by Course</a>
-
-
 
         <ul>
         {{#recipes}}
-
             <li>
-            <form name="form2" method="POST" action="/delete-recipe">
-                <div id="displayRecipesBar">
-                    <p><b><i>{{title}}</i></b> - <b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: {{course}}</b></p>
-                    {{#picture}}
-                        <img name="image" src = "{{picture}}" width="300px" height="200px"/>
-                    {{/picture}}
-                    {{^picture}}
-                        <img src="/default.jpg" width="300px" height="200px"/>
-                    {{/picture}}
-                    <button name="deleteRecipeButton">Delete Recipe</button>
-                </div>
-                <input type="hidden" value="{{id}}" name="recipeId" />
-            </form>
-                <a href="/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
-                <a href="/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
-                <input type="hidden" value="{{id}}" name="recipeId" />
-            <hr>
+            <div class="grid2">
+                <div class="grid-card2">
+                    <form name="form2" method="POST" action="/delete-recipe">
+                        <h4 name="recipeTitle"><i>{{title}}</i></h4>
+                            <div id="displayRecipesBar">
+                                <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type:</b> {{course}}</p>
+                            </div>
+                                {{#picture}}
+                                    <img name="image" src = "{{picture}}" width="300px" height="200px"/>
+                                {{/picture}}
+                                {{^picture}}
+                                    <img src="/default.jpg" width="300px" height="200px"/>
+                                {{/picture}}
+                                <button name="deleteRecipeButton">Delete Recipe</button>         
+                        <input type="hidden" value="{{id}}" name="recipeId" />
+                    </form>
+                    <a href="/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
+                    <a href="/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
+                    <input type="hidden" value="{{id}}" name="recipeId" />
             </li>
+                </div>
+            </div>
         {{/recipes}}
         </ul>
+
 
 
     </body>
