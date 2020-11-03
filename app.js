@@ -23,7 +23,6 @@ app.use(session({
 /*
 // all routes going to /trips will be handled by tripsRouter 
 app.use('/trips',authenticate,tripsRoutes)
-
 */
 
 app.engine('mustache',mustacheExpress())
@@ -36,13 +35,10 @@ app.get('/register', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    // console.log('login page')
+    console.log('login page')
     res.render('login')
 })
 
-// app.get('/mypage', authenticate, (req, res) => {
-//     res.render('mypage', {recipes: recipes})
-// })
 app.get('/mypage', authenticate, (req, res) => {
     console.log(req.session.user_id)
     models.Recipe.findAll()
@@ -54,7 +50,7 @@ app.get('/mypage', authenticate, (req, res) => {
 
 app.get('/edit-recipe/:recipeId', (req,res) => {
     const recipeId = req.params.recipeId
-    // console.log(recipeId)
+    console.log(recipeId)
     res.render('edit-recipe', {recipeId: recipeId})
 })
 
@@ -63,7 +59,6 @@ app.get('/add-recipe', (req,res) => {
 })
 
 /*
-
 */
 
 app.post('/register', async(req, res) => {
@@ -121,26 +116,25 @@ app.get('/:recipeid',async(req,res)=>{
         title:recipeDetail.data.title,
         image:recipeDetail.data.image,
         cooktime:recipeDetail.data.readyInMinutes,
-        course:recipeDetail.data,
+        course:recipeDetail.data.dishTypes[0],
         ingredient:ingredientsString,
         instruction: recipeDetail.data.instructions
     }
-    // console.log(ingredientObject)
+    console.log(ingredientObject)
     res.render('recipeDetail',ingredientObject)
 })
 
 app.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
-    // console.log(username, password)
+    console.log(username, password)
 
     const returnUser = await models.User.findOne({
         where: {
             user_name: username
             }
     })
-    let userID = returnUser[0].id
-    // console.log(userID)
+    console.log(returnUser)
 
 
     bcrypt.compare(password, returnUser.password, function (err, result) {
@@ -149,7 +143,6 @@ app.post('/login', async(req, res) => {
             if (req.session) {
                 req.session.isAuthenticated = true
                 req.session.username = username
-                
                 req.session.user_id = returnUser.id
 
                 res.redirect('/mypage' /*, { message2: `Welcome ${username}!` }*/)
@@ -178,7 +171,7 @@ app.post('/sign-out', (req,res) => {
     const signOutButton = req.body.signOutButton
 
     let signOut = req.session.destroy
-    // console.log(signOut)
+    console.log(signOut)
     signOut
 
     res.redirect('login')
@@ -262,7 +255,6 @@ app.post('/edit-recipe', (req,res) => {
 })
 
 /*
-
 */
 
 app.listen(3000,()=>{
