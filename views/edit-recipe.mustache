@@ -10,18 +10,18 @@
         <form method="POST" action="/edit-recipe/{{id}}">    
             <div id="addRecipeBar">
                 <div id="miniRecipeBar">
-                        <input type="text" placeholder="Title" name="title" />
-                        <input type="text" placeholder="Cook Time" name="cook_time" />
-                        <input type="text" placeholder="Course" name="course" />
-                        <input type="text" placeholder="Recipe URL" name="url" />
-                        <input type="text" placeholder="Recipe Photo" name="picture" />
+                        <input type="text" placeholder="Title" name="title" value='{{title}}' />
+                        <input type="text" placeholder="Cook Time" name="cook_time" value ='{{cook_time}}' />
+                        <input type="text" placeholder="Course" name="course" value='{{course}}' />
+                        <input type="text" placeholder="Recipe URL" name="url" value="{{url}}" />
+                        <input type="text" placeholder="Recipe Photo" name="picture" value="{{picture}}" />
                     </div>
                     <div id="miniRecipeBar2">
-                        <textarea type="text" placeholder="Ingredients" name="ingredients" rows="10" cols="40"></textarea>
-                        <textarea type="text" placeholder="Directions" name="directions" rows="10" cols="80"></textarea>
-                        <textarea type="text" placeholder="Notes" name="notes" rows="10" cols="20"></textarea>
+                        <textarea type="text" placeholder="Ingredients" name="ingredients" rows="10" cols="40">{{ingredients}}</textarea>
+                        <textarea type="text" placeholder="Directions" name="directions" rows="10" cols="80">{{directions}}</textarea>
+                        <textarea type="text" placeholder="Notes" name="notes" rows="10" cols="20">{{notes}}</textarea>
                         <button name="editRecipeButton">Edit Recipe</button>
-                        <input type="hidden" value="{{recipeId}}" name="recipeId" />
+                        <input type="hidden" value="{{id}}" name="recipeId" />
                 </div>
         </form>
         <a href="/mypage">Return to Home</a>

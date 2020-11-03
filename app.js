@@ -48,10 +48,18 @@ app.get('/mypage', authenticate, (req, res) => {
     })
 })
 
-app.get('/edit-recipe/:recipeId', (req,res) => {
+app.get('/edit-recipe/:recipeId', async (req,res) => {
     const recipeId = req.params.recipeId
-    console.log(recipeId)
-    res.render('edit-recipe', {recipeId: recipeId})
+    const updateRecipe = models.Recipe.findOne({
+        where: {
+            id: recipeId
+            }
+    }).then(recipe=>{
+        console.log(recipe)
+        res.render('edit-recipe',recipe.dataValues)
+    })
+
+    
 })
 
 app.get('/add-recipe', (req,res) => {
@@ -129,7 +137,7 @@ app.get('/:recipeid',async(req,res)=>{
     let ingredients = extendedIngredientsDetail.map((ingredient)=>{
         return ingredient.originalString
     })
-    let ingredientsString= ingredients.join(" ")
+    let ingredientsString= ingredients.join(".")
     let instruction = recipeDetail.data.instructions.replace(/<ol>|<li>|<\/li>|<\/ol>/g,'')
     const ingredientObject ={
         title:recipeDetail.data.title,
@@ -241,7 +249,7 @@ app.post('/delete-recipe',(req,res) => {
     })
 })
 
-app.post('/edit-recipe', (req,res) => {
+app.post('/edit-recipe/:recipeId', (req,res) => {
     const recipeId = req.body.recipeId
 
     const title = req.body.title
