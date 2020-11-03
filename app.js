@@ -112,13 +112,14 @@ app.get('/:recipeid',async(req,res)=>{
         return ingredient.originalString
     })
     let ingredientsString= ingredients.join(" ")
+    let instruction = recipeDetail.data.instructions.replace(/<ol>|<li>|<\/li>|<\/ol>/g,'')
     const ingredientObject ={
         title:recipeDetail.data.title,
         image:recipeDetail.data.image,
         cooktime:recipeDetail.data.readyInMinutes,
         course:recipeDetail.data.dishTypes[0],
         ingredient:ingredientsString,
-        instruction: recipeDetail.data.instructions
+        instruction:instruction
     }
     console.log(ingredientObject)
     res.render('recipeDetail',ingredientObject)
