@@ -31,10 +31,10 @@ app.set('views','./views')
 app.set('view engine','mustache')
 
 
-app.get('/mypage', (req,res) => {
+app.get('/mypage',authenticate,(req,res) => {
     models.Recipe.findAll()
     .then((recipes) =>{
-        console.log(recipes)
+        // console.log(recipes)
         res.render('mypage', {recipes: recipes})
     })
 })
@@ -51,17 +51,17 @@ app.get('/register', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    console.log('login page')
+    // console.log('login page')
     res.render('login')
 })
 
-app.get('/mypage', authenticate, (req, res) => {
-    res.render('mypage', {recipes: recipes})
-})
+// app.get('/mypage', authenticate, (req, res) => {
+//     res.render('mypage', {recipes: recipes})
+// })
 
 app.get('/edit-recipe/:recipeId', (req,res) => {
     const recipeId = req.params.recipeId
-    console.log(recipeId)
+    // console.log(recipeId)
     res.render('edit-recipe', {recipeId: recipeId})
 })
 
@@ -128,21 +128,22 @@ app.get('/:recipeid',async(req,res)=>{
         ingredient:ingredientsString,
         instruction: recipeDetail.data.instructions
     }
-    console.log(ingredientObject)
+    // console.log(ingredientObject)
     res.render('recipeDetail',ingredientObject)
 })
 
 app.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
-    console.log(username, password)
+    // console.log(username, password)
 
     const returnUser = await models.User.findAll({
         where: {
             user_name: username
             }
     })
-    console.log(returnUser)
+    let userID = returnUser[0].id
+    // console.log(userID)
 
 
     bcrypt.compare(password, returnUser[0].password, function (err, result) {
@@ -151,6 +152,8 @@ app.post('/login', async(req, res) => {
             if (req.session) {
                 req.session.isAuthenticated = true
                 req.session.username = username
+                req.session.userID = userID
+                
 
                 res.redirect('/mypage' /*, { message2: `Welcome ${username}!` }*/)
             } else {
@@ -178,7 +181,7 @@ app.post('/sign-out', (req,res) => {
     const signOutButton = req.body.signOutButton
 
     let signOut = req.session.destroy
-    console.log(signOut)
+    // console.log(signOut)
     signOut
 
     res.redirect('login')

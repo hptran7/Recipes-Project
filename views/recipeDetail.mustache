@@ -4,14 +4,27 @@
 
 </head>
 <body>
+<div>
 <h1>{{title}}</h1>
 <img src={{image}}></img>
 <p>Cook Time: {{cooktime}}</p>
 <p>Course: {{course}}</p>
 <p>{{ingredient}}</p>
 <p>{{instruction}}</p>
-
-
+</div>
+<div id="hidden-input">
+<form method="POST" action="/add-recipe">
+<input type='hidden' value={{title}} name="title"></input>
+<input type='hidden' value={{image}} name="picture"></input> 
+<input type='hidden' value={{cooktime}} name="cook_time"></input> 
+<input type='hidden' value={{course}} name='course'></input> 
+<input type='hidden' value={{ingredient}} name="ingredients"></input> 
+<input type='hidden' value={{instruction}} name="directions"></input> 
+<input type="hidden" placeholder="Recipe URL" name="url" value='' />
+<textarea type="text" placeholder="Notes" name="notes" rows="10" cols="20"></textarea>
+<button name="addRecipeButton">Add Recipe to My Recipe Box</button>
+</form>
+</div>
 
 </body>
 
