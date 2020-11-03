@@ -31,21 +31,6 @@ app.set('views','./views')
 app.set('view engine','mustache')
 
 
-app.get('/mypage',authenticate,(req,res) => {
-    models.Recipe.findAll()
-    .then((recipes) =>{
-        // console.log(recipes)
-        res.render('mypage', {recipes: recipes})
-    })
-})
-
-
-// app.get('/',async(req,res)=>{
-//     const resultData = await axios.get('')
-//     res.render('index')
-// })
-
-
 app.get('/register', (req, res) => {
     res.render('register')
 })
@@ -58,11 +43,23 @@ app.get('/login', (req, res) => {
 // app.get('/mypage', authenticate, (req, res) => {
 //     res.render('mypage', {recipes: recipes})
 // })
+app.get('/mypage', authenticate, (req, res) => {
+    console.log(req.session.user_id)
+    models.Recipe.findAll()
+    .then((recipes) =>{
+        console.log(recipes)
+        res.render('mypage', {recipes: recipes, user_id: req.session.user_id})
+    })
+})
 
 app.get('/edit-recipe/:recipeId', (req,res) => {
     const recipeId = req.params.recipeId
     // console.log(recipeId)
     res.render('edit-recipe', {recipeId: recipeId})
+})
+
+app.get('/add-recipe', (req,res) => {
+    res.render('add-recipe')
 })
 
 /*
@@ -137,7 +134,7 @@ app.post('/login', async(req, res) => {
     const password = req.body.password
     // console.log(username, password)
 
-    const returnUser = await models.User.findAll({
+    const returnUser = await models.User.findOne({
         where: {
             user_name: username
             }
@@ -146,14 +143,14 @@ app.post('/login', async(req, res) => {
     // console.log(userID)
 
 
-    bcrypt.compare(password, returnUser[0].password, function (err, result) {
+    bcrypt.compare(password, returnUser.password, function (err, result) {
         console.log(result)
         if (result) {
             if (req.session) {
                 req.session.isAuthenticated = true
                 req.session.username = username
-                req.session.userID = userID
                 
+                req.session.user_id = returnUser.id
 
                 res.redirect('/mypage' /*, { message2: `Welcome ${username}!` }*/)
             } else {
@@ -187,7 +184,7 @@ app.post('/sign-out', (req,res) => {
     res.redirect('login')
 })
 
-app.post('/add-recipe', async (req,res) => {
+app.post('/add-recipe', (req,res) => {
 
     const title = req.body.title
     const cook_time = req.body.cook_time
@@ -197,11 +194,11 @@ app.post('/add-recipe', async (req,res) => {
     const ingredients = req.body.ingredients
     const directions = req.body.directions
     const notes = req.body.notes
-    // const user_id = req.body.user_id
+    const user_id = req.session.user_id
     
     //Building recipe object:
-    let recipe = await
-    models.Recipe.build ({
+    
+    let recipe = models.Recipe.build ({
         title: title,
         cook_time: cook_time,
         course: course,
@@ -210,14 +207,12 @@ app.post('/add-recipe', async (req,res) => {
         ingredients: ingredients,
         directions: directions,
         notes: notes,
-        // user_id: user_id      
+        user_id: user_id      
     })
     // Saving recipe object to the Recipe Datsbase
-    await recipe.save().then((savedRecipe) => {
+    recipe.save().then((savedRecipe) => {
         console.log('saved')
-        res.render('mypage', savedRecipe.dataValues)
-    }).catch((error) => {
-        res.render('error')
+        res.redirect('/mypage')
     })
 })
 
