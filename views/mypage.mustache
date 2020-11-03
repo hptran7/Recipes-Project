@@ -24,7 +24,12 @@
             <form name="form2" method="POST" action="/delete-recipe">
                 <div id="displayRecipesBar">
                     <p><b><i>{{title}}</i></b> - <b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: {{course}}</b></p>
-                    <img name="image" src = "{{picture}}" width="300px" height="200px"/>
+                    {{#picture}}
+                        <img name="image" src = "{{picture}}" width="300px" height="200px"/>
+                    {{/picture}}
+                    {{^picture}}
+                        <img src="/default.jpg" width="300px" height="200px"/>
+                    {{/picture}}
                     <button name="deleteRecipeButton">Delete Recipe</button>
                 </div>
                 <input type="hidden" value="{{id}}" name="recipeId" />
