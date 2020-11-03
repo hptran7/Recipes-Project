@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/styles2.css">
+    </head>
+
+    <body>
+        <h1>My Recipe Box</h1>
+        <p>Search by Course: Breakfast, Lunch, Dinner, Dessert, etc</p>
+
+        <form method="POST" action="/filter-course">    
+            <div id="addRecipeBar">
+                <input type="text" placeholder="Course" name="course" />
+                <button name="filterButton">Search</button>
+            </div>
+        </form>
+        
+
+    <ul>
+    {{#postFilter}}
+    <li>
+                    <p><b><i>{{title}}</i></b> - <b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: {{course}}</b></p>
+                    <img name="image" src = "{{picture}}" width="300px" height="200px"/>
+                    <a href="/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
+                    <input type="hidden" value="{{recipeId}}" name="recipeId" />
+        <hr>
+    </li>
+    {{/postFilter}}
+    </ul>
+
+
+    <a href="/mypage">Return to Home</a>
+    </body>
+
+</html>
+

@@ -7,13 +7,14 @@
     <body>
         <h1>My Recipe Box</h1>
 
-        {{user_id}}
         <div class="surprise">{{message2}}
             <form method="POST" action="/sign-out">
                 <button name="signOutButton">Sign Out</button>
             </form>
         </div>
         <a href="/add-recipe">Add a Recipe</a>
+        <a href="/filter-course">Search for Recipes by Course</a>
+
 
 
         <ul>
@@ -23,11 +24,13 @@
             <form name="form2" method="POST" action="/delete-recipe">
                 <div id="displayRecipesBar">
                     <p><b><i>{{title}}</i></b> - <b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: {{course}}</b></p>
+                    <img name="image" src = "{{picture}}" width="300px" height="200px"/>
                     <button name="deleteRecipeButton">Delete Recipe</button>
                 </div>
                 <input type="hidden" value="{{id}}" name="recipeId" />
             </form>
                 <a href="/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
+                <a href="/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
                 <input type="hidden" value="{{id}}" name="recipeId" />
             <hr>
             </li>

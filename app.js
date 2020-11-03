@@ -59,6 +59,24 @@ app.get('/add-recipe', (req,res) => {
     res.render('add-recipe')
 })
 
+app.get('/recipe-detail/:recipeId', (req,res) => {
+    const recipeId = req.params.recipeId
+    console.log(recipeId)
+
+    models.Recipe.findByPk(recipeId, {
+    })
+    .then((recipe) => {
+        console.log(recipe)
+        res.render('recipe-detail', recipe.dataValues)
+    })
+
+})
+
+app.get('/filter-course', (req,res) => {
+
+    res.render('filter-course')
+})
+
 /*
 
 */
@@ -254,6 +272,19 @@ app.post('/edit-recipe', (req,res) => {
         res.redirect('/mypage')
     })
 
+})
+
+app.post('/filter-course', (req,res) => {
+
+    const course = req.body.course
+
+    models.Recipe.findAll({
+        where: {
+            course: course
+        }
+    }).then((filteredRecipes) => {
+        res.render('filter-course', {postFilter: filteredRecipes})
+    })
 })
 
 /*
