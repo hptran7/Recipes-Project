@@ -40,8 +40,13 @@ app.get('/login', (req, res) => {
 
 app.get('/mypage', authenticate, (req, res) => {
     console.log(req.session.user_id)
-    models.Recipe.findAll()
+    models.Recipe.findAll({
+        where: {
+            user_id: req.session.user_id
+            }
+    })
     .then((recipes) =>{
+        console.log(recipes)
         res.render('mypage', {recipes: recipes, user_id: req.session.user_id})
     })
 })
@@ -324,7 +329,8 @@ app.post('/filter-course', (req,res) => {
 
     models.Recipe.findAll({
         where: {
-            course: course
+            course: course,
+            user_id: req.session.user_id
         }
     }).then((filteredRecipes) => {
         res.render('filter-course', {postFilter: filteredRecipes})
