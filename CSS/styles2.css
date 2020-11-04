@@ -114,6 +114,16 @@ button[name="editRecipeButton"] {
     margin-top: 5px;
 }
 
+button.filterButton:hover
+{
+ background-color:#7df572;
+}
+
+button.addRecipeButton:hover
+{
+ background-color:#f5d98b;
+}
+
 button.editRecipeButton:hover
 {
  background-color:#7df572;

@@ -30,11 +30,30 @@ app.set('views','./views')
 app.set('view engine','mustache')
 
 
-app.get('/register', (req, res) => {
+app.get('/register', (req,res) => {
     res.render('register')
 })
 
-app.get('/login', (req, res) => {
+// app.get('/delete-account', authenticate, (req,res) => {
+//     console.log(req.session.user_id)
+//     // const userId = req.params.user_id
+//     const userId = req.session.user_id
+//     // const userId = req.body.user_id
+
+//     let user_id = userId
+
+//     models.User.findByPk(userId, {
+//         where: {
+//             id: req.session.user_id
+//         }
+//     }).then((user) => {
+//         console.log(user.dataValues)
+
+//     res.render('delete-account')
+//     })
+// })
+
+app.get('/login', (req,res) => {
     console.log('login page')
     res.render('login')
 })
@@ -67,7 +86,6 @@ app.get('/edit-recipe/:recipeId', async (req,res) => {
         console.log(recipe)
         res.render('edit-recipe',recipe.dataValues)
     })
-
     
 })
 
@@ -182,11 +200,32 @@ app.get('/:recipeid',async(req,res)=>{
     res.render('recipeDetail',ingredientObject)
 })
 
-app.post('/guest-login', (req,res) => {
+app.post('/guest-login', async(req,res) => {
     const username = 'Guest'
     const password = 'guest1'
     
-     res.redirect('/mypage')
+    const returnUser = await models.User.findOne({
+        where: {
+            user_name: username
+            }
+    })
+    console.log(returnUser)
+
+
+    bcrypt.compare(password, returnUser.password, function (err, result) {
+        console.log(result)
+        if (result) {
+            if (req.session) {
+                req.session.isAuthenticated = true
+                req.session.username = username
+                req.session.user_id = returnUser.id
+
+                res.redirect('/mypage')
+            } else {
+                res.redirect('/error')
+            }
+        }
+    }) 
 })
 
 app.post('/login', async(req, res) => {
@@ -321,6 +360,28 @@ app.post('/filter-course', (req,res) => {
         res.render('filter-course', {postFilter: filteredRecipes})
     })
 })
+
+// app.post('delete-account', (req,res) => {
+//     const user_id = req.session.user_id
+
+//     // function confirmFunction() {
+//     //     var txt;
+//     //     if (confirm("All user data will be lost! Are you sure you want to delete your Recipe Box account?!")) {
+
+//     models.User.destroy ({
+//         where: {
+//             id: user_id
+//         }
+//     }).then(deletedUser => {
+//         console.log(deletedUser)
+//         res.redirect('/login')
+//     })
+//     //       ;
+//     //     } else {
+//     //       txt = "You pressed Cancel!";
+//     //     }
+//     //   }
+// })
 
 /*
 */
