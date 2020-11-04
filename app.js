@@ -35,7 +35,7 @@ app.get('/register', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    console.log('login page')
+    // console.log('login page')
     res.render('login')
 })
 
@@ -43,7 +43,7 @@ app.get('/mypage', authenticate, (req, res) => {
     console.log(req.session.user_id)
     models.Recipe.findAll()
     .then((recipes) =>{
-        console.log(recipes)
+        // console.log(recipes)
         res.render('mypage', {recipes: recipes, user_id: req.session.user_id})
     })
 })
@@ -51,7 +51,7 @@ app.get('/mypage', authenticate, (req, res) => {
 app.get('/sign-out', (req,res) => {
 
     let signOut = req.session.destroy
-    console.log(signOut)
+    // console.log(signOut)
     signOut
 
     res.redirect('login')
@@ -64,7 +64,7 @@ app.get('/edit-recipe/:recipeId', async (req,res) => {
             id: recipeId
             }
     }).then(recipe=>{
-        console.log(recipe)
+        // console.log(recipe)
         res.render('edit-recipe',recipe.dataValues)
     })
 
@@ -81,8 +81,8 @@ app.get('/recipe-detail/:recipeId', (req,res) => {
     models.Recipe.findByPk(recipeId, {
     })
     .then((recipe) => {
-        console.log(recipe.dataValues.ingredients)
-        let ingredientList = recipe.dataValues.ingredients.split(', ')
+        // console.log(recipe.dataValues.ingredients)
+        let ingredientList = recipe.dataValues.ingredients.split('.')
         let title = recipe.dataValues.title
         let picture =recipe.dataValues.picture
         let cook_time = recipe.dataValues.cook_time
@@ -104,7 +104,7 @@ app.get('/recipe-detail/:recipeId', (req,res) => {
             notes:notes,
             // ingredients:ingredientList
         }
-        console.log(ingredientListObject)
+        // console.log(ingredientListObject)
         res.render('recipe-detail', {recipe:recipeObject, ingredients:ingredientListObject})
     })
 
@@ -169,30 +169,33 @@ app.get('/:recipeid',async(req,res)=>{
         return ingredient.originalString
     })
     let ingredientsString= ingredients.join(".")
+    let ingredientArrayObject= ingredients.map((ingredientDetail)=>{
+        return {ingredientDetail}
+    })
+    console.log(ingredientArrayObject)
     let instruction = recipeDetail.data.instructions.replace(/<ol>|<li>|<\/li>|<\/ol>/g,'')
-    const ingredientObject ={
+    const ingredientObject =[{
         title:recipeDetail.data.title,
         image:recipeDetail.data.image,
         cooktime:recipeDetail.data.readyInMinutes,
         course:recipeDetail.data.dishTypes[0],
         ingredient:ingredientsString,
         instruction:instruction
-    }
-    console.log(ingredientObject)
-    res.render('recipeDetail',ingredientObject)
+    }]
+    res.render('recipeDetail',{recipe:ingredientObject,ingredientDetails:ingredientArrayObject})
 })
 
 app.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
-    console.log(username, password)
+    // console.log(username, password)
 
     const returnUser = await models.User.findOne({
         where: {
             user_name: username
             }
     })
-    console.log(returnUser)
+    // console.log(returnUser)
 
 
     bcrypt.compare(password, returnUser.password, function (err, result) {
@@ -214,7 +217,7 @@ app.post('/login', async(req, res) => {
 
 // //authentication middleware
 function authenticate(req, res, next) {
-    console.log('authenticate')
+    // console.log('authenticate')
         if (req.session) {
             if (req.session.username) {
                 //continue with client's original request
@@ -252,7 +255,7 @@ app.post('/add-recipe', (req,res) => {
     })
     // Saving recipe object to the Recipe Datsbase
     recipe.save().then((savedRecipe) => {
-        console.log('saved')
+        // console.log('saved')
         res.redirect('/mypage')
     })
 })
@@ -265,7 +268,7 @@ app.post('/delete-recipe',(req,res) => {
             id: recipeId
         }
     }).then(deletedRecipe => {
-        console.log(deletedRecipe)
+        // console.log(deletedRecipe)
         res.redirect('/mypage')
     })
 })
@@ -296,7 +299,7 @@ app.post('/edit-recipe/:recipeId', (req,res) => {
             id: recipeId
         }
     }).then(updatedRecipe => {
-        console.log(updatedRecipe)
+        // console.log(updatedRecipe)
         res.redirect('/mypage')
     })
 

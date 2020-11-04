@@ -7,12 +7,19 @@
 <body>
 <div id="RecipeDetailsBox">
 <div id="detailRecipeBar">
+    {{#recipe}}
     <div id="recipe-display">
         <h1>{{title}}</h1>
         <img src={{image}} class="recipe-image">
-        <p>Cook Time: {{cooktime}}</p>
+        <p>Cook Time: {{cooktime}} Minutes</p>
         <p>Course: {{course}}</p>
-        <p>{{ingredient}}</p>
+        <label><b>Ingredients</b></label>
+        <ul>
+        {{#ingredientDetails}}
+        <li>{{ingredientDetail}}</li>
+        {{/ingredientDetails}}
+        </ul>
+        <label><b>Instruction</b></label>
         <p>{{instruction}}</p>
     </div>
     <div>
@@ -24,11 +31,13 @@
         <input type='hidden' value='{{ingredient}}' name="ingredients"></input> 
         <input type='hidden' value='{{instruction}}' name="directions"></input> 
         <input type="hidden" placeholder="Recipe URL" name="url" value='' />
-        <textarea type="text" placeholder="Notes" name="notes" rows="10" cols="40"></textarea>
+        <textarea type="text" placeholder="Notes" name="notes" rows="10" cols="60" style="background-color:white"></textarea>
         <button name="addRecipeButton">Add Recipe to My Recipe Box</button>
         </form>
     </div>
+    <a href="/mypage">Return to Home</a>
 </div>
+{{/recipe}}
 </div>
 </div>
 
