@@ -117,11 +117,11 @@ app.post('/register', async(req, res) => {
         bcrypt.hash(password, salt, function (err, hash) {
 
             if (password == '') {
-                res.render('/register', { message: 'Must enter a password!' })
+                res.render('register', { message: 'Must enter a password!' })
             }
 
             if (err) {
-                res.redirect('/register', { message: 'Error' })
+                res.redirect('register', { message: 'Error' })
             } else {
                 let user =
                 models.User.build ({
