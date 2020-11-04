@@ -185,6 +185,13 @@ app.get('/:recipeid',async(req,res)=>{
     res.render('recipeDetail',{recipe:ingredientObject,ingredientDetails:ingredientArrayObject})
 })
 
+app.post('/guest-login', (req,res) => {
+    const username = 'Guest'
+    const password = 'guest1'
+    
+     res.redirect('/mypage')
+})
+
 app.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
