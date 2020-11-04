@@ -9,6 +9,7 @@
 
         <div id="RecipeDetailsBox">
             <div id="detailRecipeBar">
+                {{#recipe}}
                 <h1>{{title}}</h1>
                     {{#picture}}
                         <img name="image" src = "{{picture}}" width="50%" height="60%"/>
@@ -19,10 +20,20 @@
                     <div id="miniDetailRecipeBar">
                         <p>Cook Time: {{cook_time}}</p> - <p>Course: {{course}}</p> - <p>Recipe URL: {{url}}</p>
                     </div>
-                <p>{{ingredients}}</p>
+                
+                <ul>
+                {{#ingredients}}
+                <li>
+                {{ingredient}}
+                </li>
+                {{/ingredients}}
+                </ul>
+                
+                <h3><b>Instruction</b></h3>
                 <p>{{directions}}</p>
                 <p>{{notes}}</p>
                 <a href="/mypage">Return to Home</a>
+                {{/recipe}}
             </div>
         </div>
 

@@ -77,13 +77,35 @@ app.get('/add-recipe', (req,res) => {
 
 app.get('/recipe-detail/:recipeId', (req,res) => {
     const recipeId = req.params.recipeId
-    console.log(recipeId)
 
     models.Recipe.findByPk(recipeId, {
     })
     .then((recipe) => {
-        console.log(recipe)
-        res.render('recipe-detail', recipe.dataValues)
+        console.log(recipe.dataValues.ingredients)
+        let ingredientList = recipe.dataValues.ingredients.split(', ')
+        let title = recipe.dataValues.title
+        let picture =recipe.dataValues.picture
+        let cook_time = recipe.dataValues.cook_time
+        let course = recipe.dataValues.course
+        let url = recipe.dataValues.url
+        let instruction = recipe.dataValues.directions
+        let notes = recipe.dataValues.notes
+        let ingredientListObject = ingredientList.map((ingredient)=>{
+            return {ingredient}
+        })
+
+        let recipeObject = {
+            title:title,
+            picture:picture,
+            cook_time:cook_time,
+            course:course,
+            url:url,
+            directions:instruction,
+            notes:notes,
+            // ingredients:ingredientList
+        }
+        console.log(ingredientListObject)
+        res.render('recipe-detail', {recipe:recipeObject, ingredients:ingredientListObject})
     })
 
 })

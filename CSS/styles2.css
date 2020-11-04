@@ -298,10 +298,15 @@ textarea[name="notes"] {
 
 #RecipeDetailsBox {
     height: 70%;
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     margin-top: 5%;
 }
+#hidden-input{
+    display: flex;
+    flex-direction: column;
+}
+
 
 img {
     border: 5px solid #488b42;
@@ -322,6 +327,9 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.recipe-image{
+    width: 50%;
 }
 
 h4[name="recipeTitle"] {
