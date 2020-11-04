@@ -2,7 +2,8 @@ body {
     font-family: 'Grandstander', cursive;
     display: flex;
     flex-direction: column;
-    background: radial-gradient(#a9faa2, #f5e7c0);
+    /* background: radial-gradient(#a9faa2, #f5e7c0); */
+    background: radial-gradient(#7bf86f, #f5e7c0);
     /* background-image: url('kitchen.jpg'); */
     /* size: 100%; */
 }
@@ -12,6 +13,13 @@ h1 {
     text-decoration: underline;
     font-size: 50px;
     margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+h3[name="search"] {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 .surprise {
@@ -23,15 +31,16 @@ h1 {
     justify-self: center;
 }
 
-button[name="signOutButton"] {
+#filter {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    background-color: #7df572;
-    box-shadow: 
-    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
-    border-radius: 50px;
-    margin: 0 auto;
-    height: 30px;
+    justify-content: center;
+}
+
+#filterRecipeBar {
+    display: flex;
+    margin-bottom: 20px;
 }
 
 #addRecipeBar {
@@ -102,7 +111,22 @@ button[name="editRecipeButton"] {
     border-radius: 50px;
     margin: 0 auto;
     height: 30px;
-    margin-top: 20px;
+    margin-top: 5px;
+}
+
+button.editRecipeButton:hover
+{
+ background-color:#7df572;
+}
+
+button.deleteRecipeButton:hover
+{
+ background-color:#7df572;
+}
+
+button.recipeDetailsButton:hover
+{
+ background-color:#7df572;
 }
 
 button[name="deleteRecipeButton"] {
@@ -127,6 +151,91 @@ button[name="recipeDetailsButton"] {
     margin: 0 auto;
     height: 30px;
     margin-top: 20px;
+}
+
+button[name="filterButton"] {
+    background-color: #f5d98b;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+
+input[name="course"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+
+input[name="title"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+
+input[name="cook_time"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+input[name="url"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+input[name="picture"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+textarea[name="ingredients"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+textarea[name="directions"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+}
+
+textarea[name="notes"] {
+    background-color: #f5e7c0;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    margin: 10px;
 }
 
 .grid{
@@ -175,6 +284,7 @@ button[name="recipeDetailsButton"] {
     border: 1px solid black;
     border-radius: 15px;
     padding: 1em;
+    background-color: #f5e7c0;
 }
 
 #miniDetailRecipeBar {

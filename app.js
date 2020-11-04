@@ -48,6 +48,15 @@ app.get('/mypage', authenticate, (req, res) => {
     })
 })
 
+app.get('/sign-out', (req,res) => {
+
+    let signOut = req.session.destroy
+    console.log(signOut)
+    signOut
+
+    res.redirect('login')
+})
+
 app.get('/edit-recipe/:recipeId', async (req,res) => {
     const recipeId = req.params.recipeId
     const updateRecipe = models.Recipe.findOne({
@@ -193,16 +202,6 @@ function authenticate(req, res, next) {
             }
         }
     }
-
-app.post('/sign-out', (req,res) => {
-    const signOutButton = req.body.signOutButton
-
-    let signOut = req.session.destroy
-    console.log(signOut)
-    signOut
-
-    res.redirect('login')
-})
 
 app.post('/add-recipe', (req,res) => {
 

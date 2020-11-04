@@ -12,9 +12,8 @@
             <div class="dropdown-content">
                 <a href="/add-recipe">Add a Recipe</a>
                 <a href="/filter-course">Search for Recipes by Course</a>
-                <form method="POST" action="/sign-out">
-                    <button name="signOutButton">Sign Out</button>
-                </form>
+                <a href="/">Search for Recipes by Ingredient</a>
+                <a href="/sign-out">Sign Out</a>
              </div>
         </div>
 
@@ -34,11 +33,11 @@
                                 {{^picture}}
                                     <img src="/default.jpg" width="300px" height="200px"/>
                                 {{/picture}}
-                                <button name="deleteRecipeButton">Delete Recipe</button>         
+                                <button class="deleteRecipeButton" name="deleteRecipeButton">Delete Recipe</button>         
                         <input type="hidden" value="{{id}}" name="recipeId" />
                     </form>
-                    <a href="/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
-                    <a href="/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
+                    <a href="/edit-recipe/{{id}}"><button class="editRecipeButton" name="editRecipeButton">Edit Recipe</button></a>
+                    <a href="/recipe-detail/{{id}}"><button class="recipeDetailsButton" name="recipeDetailsButton">Recipe Details</button></a>
                     <input type="hidden" value="{{id}}" name="recipeId" />
             </li>
                 </div>

@@ -6,30 +6,50 @@
 
     <body>
         <h1>My Recipe Box</h1>
-        <p>Search by Course: Breakfast, Lunch, Dinner, Dessert, etc</p>
+        <h3 name="search">Search by Course: Breakfast, Lunch, Dinner, Dessert, etc.</h3>
 
-        <form method="POST" action="/filter-course">    
-            <div id="addRecipeBar">
+        <form method="POST" action="/filter-course"> 
+        <div id="filter">  
+            <div id="filterRecipeBar">
                 <input type="text" placeholder="Course" name="course" />
                 <button name="filterButton">Search</button>
             </div>
+            <div id="home">
+                    <a href="/mypage">Return to Home</a>
+            </div>
+        </div>
         </form>
         
 
-    <ul>
-    {{#postFilter}}
-    <li>
-                    <p><b><i>{{title}}</i></b> - <b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: {{course}}</b></p>
-                    <img name="image" src = "{{picture}}" width="300px" height="200px"/>
+        <ul>
+        {{#postFilter}}
+            <li>
+            <div class="grid2">
+                <div class="grid-card2">
+                    <form name="form2" method="POST" action="/delete-recipe">
+                        <h4 name="recipeTitle"><i>{{title}}</i></h4>
+                            <div id="displayRecipesBar">
+                                <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type:</b> {{course}}</p>
+                            </div>
+                                {{#picture}}
+                                    <img name="image" src = "{{picture}}" width="300px" height="200px"/>
+                                {{/picture}}
+                                {{^picture}}
+                                    <img src="/default.jpg" width="300px" height="200px"/>
+                                {{/picture}}
+                                <button name="deleteRecipeButton">Delete Recipe</button>         
+                        <input type="hidden" value="{{id}}" name="recipeId" />
+                    </form>
+                    <a href="/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
                     <a href="/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
-                    <input type="hidden" value="{{recipeId}}" name="recipeId" />
-        <hr>
-    </li>
-    {{/postFilter}}
-    </ul>
+                    <input type="hidden" value="{{id}}" name="recipeId" />
+            </li>
+                </div>
+            </div>
+        {{/postFilter}}
+        </ul>
 
 
-    <a href="/mypage">Return to Home</a>
     </body>
 
 </html>
