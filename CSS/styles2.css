@@ -270,7 +270,7 @@ textarea[name="notes"] {
     border: 1px solid black;
     border-radius: 15px;
     padding: 1em;
-    background-color: #fafaf9;
+    background-color: #f5e7c0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -335,8 +335,13 @@ textarea[name="notes"] {
 img {
     border: 5px solid #488b42;
     border-radius: 15px;
+
 }
 
+.small-image{
+    max-width: 312px;
+    max-height: 231px;
+}
 .grid2{
     display: grid;
     grid-gap: 5px 5px;
@@ -351,6 +356,7 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 350px;
 }
 .recipe-image{
     width: 50%;
