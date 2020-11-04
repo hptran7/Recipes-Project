@@ -4,21 +4,25 @@
 <link rel="stylesheet" href="/styles2.css">
 </head>
 <body>
-    <h1>Recipe Box</h1>
+<div id='APISearchContainer'>
+    <h1> My Recipe Box</h1>
 <div class='form-box'>    
 <form method="POST" action='/recipe-search'>
-<input placeholder="Please enter your dish" name="recipeSearch" class='recipe-txt'></input>
+<input placeholder="Please enter your dish or ingredient" name="recipeSearch" class='recipe-txt'></input>
 <button class ='search-btn'>Search</button>
 </form>
 </div>
 <div class="grid">
 {{#recipes}}
 <div class="grid-card">
+<i><h3 class='APIRecipeTitle'>{{title}}</h3></i>
 <img src="{{image}}"></img>
-<a href="http://localhost:3000/{{id}}"><h3>{{title}}</h3></a>
+<a href="http://localhost:3000/{{id}}"><button class="APIrecipeDetailsButton">Recipe Details</button></a>
 </div>
 
 {{/recipes}}
+</div>
+<a href="/mypage">Return to Home</a>
 </div>
 </body>
 </html>

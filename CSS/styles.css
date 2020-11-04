@@ -89,3 +89,9 @@ input[name="password"] {
     justify-content: space-between;
     margin: 0 auto;
 }
+#confirmRegisterContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

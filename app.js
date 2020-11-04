@@ -34,27 +34,7 @@ app.get('/register', (req,res) => {
     res.render('register')
 })
 
-// app.get('/delete-account', authenticate, (req,res) => {
-//     console.log(req.session.user_id)
-//     // const userId = req.params.user_id
-//     const userId = req.session.user_id
-//     // const userId = req.body.user_id
-
-//     let user_id = userId
-
-//     models.User.findByPk(userId, {
-//         where: {
-//             id: req.session.user_id
-//         }
-//     }).then((user) => {
-//         console.log(user.dataValues)
-
-//     res.render('delete-account')
-//     })
-// })
-
-app.get('/login', (req,res) => {
-    console.log('login page')
+app.get('/login', (req, res) => {
     res.render('login')
 })
 
@@ -62,7 +42,6 @@ app.get('/mypage', authenticate, (req, res) => {
     console.log(req.session.user_id)
     models.Recipe.findAll()
     .then((recipes) =>{
-        console.log(recipes)
         res.render('mypage', {recipes: recipes, user_id: req.session.user_id})
     })
 })
@@ -70,7 +49,6 @@ app.get('/mypage', authenticate, (req, res) => {
 app.get('/sign-out', (req,res) => {
 
     let signOut = req.session.destroy
-    console.log(signOut)
     signOut
 
     res.redirect('login')
@@ -83,7 +61,6 @@ app.get('/edit-recipe/:recipeId', async (req,res) => {
             id: recipeId
             }
     }).then(recipe=>{
-        console.log(recipe)
         res.render('edit-recipe',recipe.dataValues)
     })
     
@@ -99,8 +76,7 @@ app.get('/recipe-detail/:recipeId', (req,res) => {
     models.Recipe.findByPk(recipeId, {
     })
     .then((recipe) => {
-        console.log(recipe.dataValues.ingredients)
-        let ingredientList = recipe.dataValues.ingredients.split(', ')
+        let ingredientList = recipe.dataValues.ingredients.split('.')
         let title = recipe.dataValues.title
         let picture =recipe.dataValues.picture
         let cook_time = recipe.dataValues.cook_time
@@ -120,9 +96,8 @@ app.get('/recipe-detail/:recipeId', (req,res) => {
             url:url,
             directions:instruction,
             notes:notes,
-            // ingredients:ingredientList
         }
-        console.log(ingredientListObject)
+
         res.render('recipe-detail', {recipe:recipeObject, ingredients:ingredientListObject})
     })
 
@@ -133,8 +108,6 @@ app.get('/filter-course', (req,res) => {
     res.render('filter-course')
 })
 
-/*
-*/
 
 app.post('/register', async(req, res) => {
     const username = req.body.username
@@ -187,17 +160,20 @@ app.get('/:recipeid',async(req,res)=>{
         return ingredient.originalString
     })
     let ingredientsString= ingredients.join(".")
+    let ingredientArrayObject= ingredients.map((ingredientDetail)=>{
+        return {ingredientDetail}
+    })
+    console.log(ingredientArrayObject)
     let instruction = recipeDetail.data.instructions.replace(/<ol>|<li>|<\/li>|<\/ol>/g,'')
-    const ingredientObject ={
+    const ingredientObject =[{
         title:recipeDetail.data.title,
         image:recipeDetail.data.image,
         cooktime:recipeDetail.data.readyInMinutes,
         course:recipeDetail.data.dishTypes[0],
         ingredient:ingredientsString,
         instruction:instruction
-    }
-    console.log(ingredientObject)
-    res.render('recipeDetail',ingredientObject)
+    }]
+    res.render('recipeDetail',{recipe:ingredientObject,ingredientDetails:ingredientArrayObject})
 })
 
 app.post('/guest-login', async(req,res) => {
@@ -231,15 +207,12 @@ app.post('/guest-login', async(req,res) => {
 app.post('/login', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
-    console.log(username, password)
 
     const returnUser = await models.User.findOne({
         where: {
             user_name: username
             }
     })
-    console.log(returnUser)
-
 
     bcrypt.compare(password, returnUser.password, function (err, result) {
         console.log(result)
@@ -249,9 +222,9 @@ app.post('/login', async(req, res) => {
                 req.session.username = username
                 req.session.user_id = returnUser.id
 
-                res.redirect('/mypage' /*, { message2: `Welcome ${username}!` }*/)
+                res.redirect('/mypage')
             } else {
-                res.redirect('/error' /*, { message: 'Username or password is incorrect' }*/)
+                res.redirect('/error')
             }
         }
     }) 
@@ -260,7 +233,6 @@ app.post('/login', async(req, res) => {
 
 // //authentication middleware
 function authenticate(req, res, next) {
-    console.log('authenticate')
         if (req.session) {
             if (req.session.username) {
                 //continue with client's original request
@@ -298,7 +270,7 @@ app.post('/add-recipe', (req,res) => {
     })
     // Saving recipe object to the Recipe Datsbase
     recipe.save().then((savedRecipe) => {
-        console.log('saved')
+        // console.log('saved')
         res.redirect('/mypage')
     })
 })
@@ -311,7 +283,6 @@ app.post('/delete-recipe',(req,res) => {
             id: recipeId
         }
     }).then(deletedRecipe => {
-        console.log(deletedRecipe)
         res.redirect('/mypage')
     })
 })
@@ -342,7 +313,6 @@ app.post('/edit-recipe/:recipeId', (req,res) => {
             id: recipeId
         }
     }).then(updatedRecipe => {
-        console.log(updatedRecipe)
         res.redirect('/mypage')
     })
 
@@ -361,30 +331,6 @@ app.post('/filter-course', (req,res) => {
     })
 })
 
-// app.post('delete-account', (req,res) => {
-//     const user_id = req.session.user_id
-
-//     // function confirmFunction() {
-//     //     var txt;
-//     //     if (confirm("All user data will be lost! Are you sure you want to delete your Recipe Box account?!")) {
-
-//     models.User.destroy ({
-//         where: {
-//             id: user_id
-//         }
-//     }).then(deletedUser => {
-//         console.log(deletedUser)
-//         res.redirect('/login')
-//     })
-//     //       ;
-//     //     } else {
-//     //       txt = "You pressed Cancel!";
-//     //     }
-//     //   }
-// })
-
-/*
-*/
 
 app.listen(3000,()=>{
     console.log('Server Is Running')
