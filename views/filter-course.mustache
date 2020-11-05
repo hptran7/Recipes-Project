@@ -21,33 +21,33 @@
         </form>
         
 
-        <ul>
-        {{#postFilter}}
-            <li>
+        <div class="filterContainer">
             <div class="grid2">
-                <div class="grid-card2">
-                    <form name="form2" method="POST" action="/mypage/delete-recipe">
-                        <h4 name="recipeTitle"><i>{{title}}</i></h4>
-                            <div id="displayRecipesBar">
-                                <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type:</b> {{course}}</p>
+                    {{#postFilter}}
+                            <div class="grid-card2">
+
+                                <form name="form2" method="POST" action="/mypage/delete-recipe">
+                                    <h4 name="recipeTitle"><i>{{title}}</i></h4>
+                                        <div id="displayRecipesBar">
+                                            <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type:</b> {{course}}</p>
+                                        </div>
+                                            {{#picture}}
+                                                <img name="image" src = "{{picture}}" width="300px" height="200px"/>
+                                            {{/picture}}
+                                            {{^picture}}
+                                                <img src="/default.jpg" width="300px" height="200px"/>
+                                            {{/picture}}
+                                            <button name="deleteRecipeButton">Delete Recipe</button>         
+                                    <input type="hidden" value="{{id}}" name="recipeId" />
+                                </form>
+
+                                <a href="/mypage/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
+                                <a href="/mypage/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
+                                <input type="hidden" value="{{id}}" name="recipeId" />
                             </div>
-                                {{#picture}}
-                                    <img name="image" src = "{{picture}}" width="300px" height="200px"/>
-                                {{/picture}}
-                                {{^picture}}
-                                    <img src="/default.jpg" width="300px" height="200px"/>
-                                {{/picture}}
-                                <button name="deleteRecipeButton">Delete Recipe</button>         
-                        <input type="hidden" value="{{id}}" name="recipeId" />
-                    </form>
-                    <a href="/mypage/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
-                    <a href="/mypage/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
-                    <input type="hidden" value="{{id}}" name="recipeId" />
-            </li>
-                </div>
+                    {{/postFilter}}
             </div>
-        {{/postFilter}}
-        </ul>
+        </div>
 
 
     </body>

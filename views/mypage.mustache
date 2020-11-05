@@ -17,35 +17,35 @@
              </div>
         </div>
 
-        <ul>
-        {{#recipes}}
-            <li>
+        <div class="myPageContainer">
             <div class="grid2">
-                <div class="grid-card2">
-                    <form name="form2" method="POST" action="/mypage/delete-recipe">
-                        <h4 name="recipeTitle"><i>{{title}}</i></h4>
-                            <div id="displayRecipesBar">
-                                <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: </b> {{course}}</p>
-                            </div>
-                                {{#picture}}
-                                    <img name="image" src = "{{picture}}" width="300px" height="200px" class='small-image'/>
-                                {{/picture}}
-                                {{^picture}}
-                                    <img src="/default.jpg" width="300px" height="200px" class='small-image'/>
-                                {{/picture}}
-                                <button class="deleteRecipeButton" name="deleteRecipeButton">Delete Recipe</button>         
-                        <input type="hidden" value="{{id}}" name="recipeId" />
-                    </form>
-                    <a href="/mypage/edit-recipe/{{id}}"><button class="editRecipeButton" name="editRecipeButton">Edit Recipe</button></a>
-                    <a href="/mypage/recipe-detail/{{id}}"><button class="recipeDetailsButton" name="recipeDetailsButton">Recipe Details</button></a>
-                    <input type="hidden" value="{{id}}" name="recipeId" />
-            </li>
-                </div>
+
+                {{#recipes}}
+
+                        <div class="grid-card2">
+                            <form name="form2" method="POST" action="/mypage/delete-recipe">
+                                <h4 name="recipeTitle"><i>{{title}}</i></h4>
+                                    <div id="displayRecipesBar">
+                                        <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: </b> {{course}}</p>
+                                    </div>
+                                        {{#picture}}
+                                            <img name="image" src = "{{picture}}" width="300px" height="200px" class='small-image'/>
+                                        {{/picture}}
+                                        {{^picture}}
+                                            <img src="/default.jpg" width="300px" height="200px" class='small-image'/>
+                                        {{/picture}}
+                                        <button class="deleteRecipeButton" name="deleteRecipeButton">Delete Recipe</button>         
+                                <input type="hidden" value="{{id}}" name="recipeId" />
+                            </form>
+                            <a href="/mypage/edit-recipe/{{id}}"><button class="editRecipeButton" name="editRecipeButton">Edit Recipe</button></a>
+                            <a href="/mypage/recipe-detail/{{id}}"><button class="recipeDetailsButton" name="recipeDetailsButton">Recipe Details</button></a>
+                            <input type="hidden" value="{{id}}" name="recipeId" />
+                        </div>
+
+                {{/recipes}}
+
             </div>
-        {{/recipes}}
-        </ul>
-
-
+        </div>
 
     </body>
 

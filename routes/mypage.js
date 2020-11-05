@@ -27,9 +27,9 @@ router.get('/edit-recipe/:recipeId', async (req,res) => {
     
 })
 
-// router.get('/add-recipe', (req,res) => {
-//     res.render('add-recipe')
-// })
+router.get('/add-recipe', (req,res) => {
+    res.render('add-recipe')
+})
 
 router.get('/recipe-detail/:recipeId', (req,res) => {
     const recipeId = req.params.recipeId
@@ -65,9 +65,18 @@ router.get('/recipe-detail/:recipeId', (req,res) => {
 })
 
 router.get('/filter-course', (req,res) => {
-
-    res.render('filter-course')
+    console.log(req.session.user_id)
+    models.Recipe.findAll({
+        where: {
+            user_id: req.session.user_id
+            }
+    })
+    .then((recipes) =>{
+        res.render('filter-course', {postFilter: recipes, user_id: req.session.user_id})
+    })
+    // res.render('filter-course')
 })
+
 router.post('/add-recipe', (req,res) => {
 
     const title = req.body.title
@@ -99,6 +108,7 @@ router.post('/add-recipe', (req,res) => {
         res.redirect('/mypage')
     })
 })
+
 router.post('/delete-recipe',(req,res) => {
     const recipeId = req.body.recipeId
 
