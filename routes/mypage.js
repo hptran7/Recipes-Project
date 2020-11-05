@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const models = require('../models')
 
 router.get('/', (req, res) => {
-    console.log(req.session.user_id)
+    // console.log(req.session.user_id)
     models.Recipe.findAll({
         where: {
             user_id: req.session.user_id
