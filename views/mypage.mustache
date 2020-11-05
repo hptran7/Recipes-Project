@@ -10,9 +10,9 @@
         <div class="dropdown">
         <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
-                <a href="/add-recipe">Add a Recipe</a>
-                <a href="/filter-course">Search for Recipes by Course</a>
-                <a href="/">Search for Recipes by Ingredient</a>
+                <a href="/mypage/add-recipe">Add a Recipe</a>
+                <a href="/mypage/filter-course">Search for Recipes by Course</a>
+                <a href="/apiMenu">Search for Recipes by Ingredient</a>
                 <a href="/sign-out">Sign Out</a>
              </div>
         </div>
@@ -22,7 +22,7 @@
             <li>
             <div class="grid2">
                 <div class="grid-card2">
-                    <form name="form2" method="POST" action="/delete-recipe">
+                    <form name="form2" method="POST" action="/mypage/delete-recipe">
                         <h4 name="recipeTitle"><i>{{title}}</i></h4>
                             <div id="displayRecipesBar">
                                 <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type: </b> {{course}}</p>
@@ -36,8 +36,8 @@
                                 <button class="deleteRecipeButton" name="deleteRecipeButton">Delete Recipe</button>         
                         <input type="hidden" value="{{id}}" name="recipeId" />
                     </form>
-                    <a href="/edit-recipe/{{id}}"><button class="editRecipeButton" name="editRecipeButton">Edit Recipe</button></a>
-                    <a href="/recipe-detail/{{id}}"><button class="recipeDetailsButton" name="recipeDetailsButton">Recipe Details</button></a>
+                    <a href="/mypage/edit-recipe/{{id}}"><button class="editRecipeButton" name="editRecipeButton">Edit Recipe</button></a>
+                    <a href="/mypage/recipe-detail/{{id}}"><button class="recipeDetailsButton" name="recipeDetailsButton">Recipe Details</button></a>
                     <input type="hidden" value="{{id}}" name="recipeId" />
             </li>
                 </div>

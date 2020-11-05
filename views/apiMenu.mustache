@@ -7,7 +7,7 @@
 <div id='APISearchContainer'>
     <h1> My Recipe Box</h1>
 <div class='form-box'>    
-<form method="POST" action='/recipe-search'>
+<form method="POST" action='/apiMenu/recipe-search'>
 <input placeholder="Please enter your dish or ingredient" name="recipeSearch" class='recipe-txt'></input>
 <button class ='search-btn'>Search</button>
 </form>
@@ -17,7 +17,7 @@
 <div class="grid-card">
 <i><h3 class='APIRecipeTitle'>{{title}}</h3></i>
 <img src="{{image}}" class='small-image'></img>
-<a href="http://localhost:3000/{{id}}"><button class="APIrecipeDetailsButton">Recipe Details</button></a>
+<a href="http://localhost:3000/apiMenu/{{id}}"><button class="APIrecipeDetailsButton">Recipe Details</button></a>
 </div>
 
 {{/recipes}}
