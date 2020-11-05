@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
             }
     })
     .then((recipes) =>{
-        console.log(recipes)
         res.render('mypage', {recipes: recipes, user_id: req.session.user_id})
     })
 })
@@ -28,9 +27,9 @@ router.get('/edit-recipe/:recipeId', async (req,res) => {
     
 })
 
-router.get('/add-recipe', (req,res) => {
-    res.render('add-recipe')
-})
+// router.get('/add-recipe', (req,res) => {
+//     res.render('add-recipe')
+// })
 
 router.get('/recipe-detail/:recipeId', (req,res) => {
     const recipeId = req.params.recipeId
