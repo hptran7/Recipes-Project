@@ -26,32 +26,41 @@ router.get('/sign-out', (req,res) => {
 router.post('/register', async(req, res) => {
     const username = req.body.username
     const password = req.body.password
-
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(password, salt, function (err, hash) {
-
-            if (password == '') {
-                res.render('register', { message: 'Must enter a password!' })
+    const currentUser = await models.User.count({
+        where: {
+            user_name: username
             }
-
-            if (err) {
-                res.redirect('register', { message: 'Error' })
-            } else {
-                let user =
-                models.User.build ({
-                    user_name: username,
-                    password: hash,
-                })
-                user.save().then((savedUser) => {
-                    res.render('confirmRegister', savedUser.dataValues)
-                }).catch((error) => {
-                    res.render('error')
-                })
-
-            }
-
+    }).then((user)=> {return user})
+    if(currentUser){
+        res.render('register', { message: 'Username has already taken!' })
+    }else{
+        bcrypt.genSalt(10, function (err, salt) {
+            bcrypt.hash(password, salt, function (err, hash) {
+    
+                if (password == '') {
+                    res.render('register', { message: 'Must enter a password!' })
+                }
+    
+                else if (err) {
+                    res.redirect('register', { message: 'Error' })
+                } else {
+                    let user =
+                    models.User.build ({
+                        user_name: username,
+                        password: hash,
+                    })
+                    user.save().then((savedUser) => {
+                        res.render('confirmRegister', savedUser.dataValues)
+                    }).catch((error) => {
+                        res.render('error')
+                    })
+    
+                }
+    
+            })
         })
-    })
+    }
+    
 
 })
 
