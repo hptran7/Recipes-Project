@@ -12,6 +12,8 @@ const userRoutes = require('./routes/users')
 const myPageRoutes = require('./routes/mypage')
 const apiMenuRoutes = require('./routes/apiRecipe')
 
+require('dotenv').config()
+
 app.use(express.urlencoded())
 
 app.use(express.static("css"))
@@ -19,7 +21,7 @@ app.use(express.static("images"))
 
 // initialize the session 
 app.use(session({
-    secret: 'USEASECUREKEYHERE',
+    secret: process.env.SESSION_SECRET_KEY,
     resave: false,
     saveUninitialized: true
 }))
