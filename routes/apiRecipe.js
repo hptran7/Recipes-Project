@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs');
 const models = require('../models')
+const axios = require('axios')
 
 router.get('/',async(req,res)=>{
     const resultData = await axios.get('https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=16&apiKey=aeaea5163d2a46529d7c282344fc87d5')
