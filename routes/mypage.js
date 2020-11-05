@@ -27,9 +27,9 @@ router.get('/edit-recipe/:recipeId', async (req,res) => {
     
 })
 
-// router.get('/add-recipe', (req,res) => {
-//     res.render('add-recipe')
-// })
+router.get('/add-recipe', (req,res) => {
+    res.render('add-recipe')
+})
 
 router.get('/recipe-detail/:recipeId', (req,res) => {
     const recipeId = req.params.recipeId
