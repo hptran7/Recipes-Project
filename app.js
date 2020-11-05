@@ -26,6 +26,8 @@ app.use(session({
     saveUninitialized: true
 }))
 
+const PORT = process.env.PORT || 8080
+
 
 app.engine('mustache',mustacheExpress())
 app.set('views','./views')
@@ -34,6 +36,8 @@ app.set('view engine','mustache')
 app.use('/',userRoutes)
 app.use('/mypage',authenticate,myPageRoutes)
 app.use('/apiMenu',authenticate,apiMenuRoutes)
+
+
 
 // //authentication middleware
 function authenticate(req, res, next) {
@@ -47,6 +51,6 @@ function authenticate(req, res, next) {
         }
     }
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log('Server Is Running')
 })
