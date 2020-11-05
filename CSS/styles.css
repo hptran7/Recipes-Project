@@ -2,7 +2,7 @@ body {
     font-family: 'Grandstander', cursive;
     display: flex;
     flex-direction: column;
-    background-image: url('kitchen.jpg');
+    background-image: url('/images/kitchen.jpg');
 }
 
 h1 {
