@@ -8,7 +8,7 @@
         <h1>My Recipe Box</h1>
         <h3 name="search">Search by Course: Breakfast, Lunch, Dinner, Dessert, etc.</h3>
 
-        <form method="POST" action="/filter-course"> 
+        <form method="POST" action="/mypage/filter-course"> 
         <div id="filter">  
             <div id="filterRecipeBar">
                 <input type="text" placeholder="Course" name="course" />
@@ -26,7 +26,7 @@
             <li>
             <div class="grid2">
                 <div class="grid-card2">
-                    <form name="form2" method="POST" action="/delete-recipe">
+                    <form name="form2" method="POST" action="/mypage/delete-recipe">
                         <h4 name="recipeTitle"><i>{{title}}</i></h4>
                             <div id="displayRecipesBar">
                                 <p><b>Cook time:</b> {{cook_time}}</p> - <b>Course Type:</b> {{course}}</p>
@@ -40,8 +40,8 @@
                                 <button name="deleteRecipeButton">Delete Recipe</button>         
                         <input type="hidden" value="{{id}}" name="recipeId" />
                     </form>
-                    <a href="/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
-                    <a href="/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
+                    <a href="/mypage/edit-recipe/{{id}}"><button name="editRecipeButton">Edit Recipe</button></a>
+                    <a href="/mypage/recipe-detail/{{id}}"><button name="recipeDetailsButton">Recipe Details</button></a>
                     <input type="hidden" value="{{id}}" name="recipeId" />
             </li>
                 </div>
