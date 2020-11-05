@@ -16,8 +16,11 @@ require('dotenv').config()
 
 app.use(express.urlencoded())
 
-app.use(express.static("css"))
-app.use(express.static("images"))
+// app.use(express.static("css"))
+// app.use(express.static("images"))
+
+app.use('/CSS', express.static('CSS')) // static folder for css at localhost:3000/css/style.css
+app.use('/images', express.static('images'))
 
 // initialize the session 
 app.use(session({

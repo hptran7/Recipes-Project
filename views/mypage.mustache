@@ -1,7 +1,7 @@
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@300&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/styles2.css">
+        <link rel="stylesheet" href="/CSS/styles2.css">
     </head>
 
     <body>
@@ -32,7 +32,7 @@
                                             <img name="image" src = "{{picture}}" width="300px" height="200px" class='small-image'/>
                                         {{/picture}}
                                         {{^picture}}
-                                            <img name="image" src="/default.jpg" width="300px" height="200px" class='small-image'/>
+                                            <img src="/images/default.jpg" width="300px" height="200px" class='small-image'/>
                                         {{/picture}}
                                         <button class="deleteRecipeButton" name="deleteRecipeButton">Delete Recipe</button>         
                                 <input type="hidden" value="{{id}}" name="recipeId" />
