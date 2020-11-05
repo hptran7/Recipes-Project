@@ -8,7 +8,7 @@
     <body>
 
         <div id='APISearchContainer'>
-            <h1> My Recipe Box</h1>
+        <img name="logoImage" src = "logo-green.png" width="200px" height="100px"/>
             <h3 name="search">Search by Ingredient: Chicken, Pasta, Mushrooms, etc.</h3>
             
                 <div class='form-box'>    
@@ -23,7 +23,7 @@
                     {{#recipes}}
                         <div class="grid-card">
                             <i><h3 class='APIRecipeTitle'>{{title}}</h3></i>
-                            <img src="{{image}}" class='small-image'>
+                            <img name="image" src="{{image}}" class='small-image'>
                             <a href="http://localhost:3000/apiMenu/{{id}}"><button class="APIrecipeDetailsButton">Recipe Details</button></a>
                         </div>
                     {{/recipes}}

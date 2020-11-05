@@ -26,7 +26,6 @@ router.get('/:recipeid',async(req,res)=>{
     let ingredientArrayObject= ingredients.map((ingredientDetail)=>{
         return {ingredientDetail}
     })
-    // console.log(ingredientArrayObject)
     let instruction = recipeDetail.data.instructions.replace(/<ol>|<li>|<\/li>|<\/ol>/g,'')
     const ingredientObject =[{
         title:recipeDetail.data.title,

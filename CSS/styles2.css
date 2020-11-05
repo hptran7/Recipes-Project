@@ -2,10 +2,18 @@ body {
     font-family: 'Grandstander', cursive;
     display: flex;
     flex-direction: column;
-    /* background: radial-gradient(#a9faa2, #f5e7c0); */
     background: radial-gradient(#7bf86f, #f5e7c0);
-    /* background-image: url('kitchen.jpg'); */
-    /* size: 100%; */
+}
+
+img[name="logoImage"] {
+    border-radius: 30px;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: gray solid;
+    border-width: 1px;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
 }
 
 h1 {
@@ -55,13 +63,13 @@ label{
     align-items: center;
     justify-content: space-between;
     margin-left: 0 auto;
-    /* padding: 20px; */
+    margin-top: 30px;
 }
 
 #miniRecipeBar {
     display: flex;
     justify-content: space-between;
-    margin: 10px
+    margin: 10px;
 }
 
 #miniRecipeBar2 {
@@ -69,7 +77,7 @@ label{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 10px
+    margin: 10px;
 }
 .APIaddrecipenotes{
     background-color: white;
@@ -258,7 +266,7 @@ textarea[name="notes"] {
     margin: 10px;
 }
 
-.grid{
+.grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 10px 10px;
@@ -275,8 +283,8 @@ textarea[name="notes"] {
     }
     
 }
-.grid-card{
-    border: 1px solid black;
+.grid-card {
+    border: 1px gray solid;
     border-radius: 15px;
     padding: 1em;
     background-color: #f5e7c0;
@@ -284,9 +292,12 @@ textarea[name="notes"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
 }
 
-.recipe-txt{
+.recipe-txt {
     background-color: #f5e7c0;
     box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
@@ -294,7 +305,7 @@ textarea[name="notes"] {
     border-radius: 5px;
     margin: 10px;
 }
-.search-btn{
+.search-btn {
     background-color: #f5d98b;
     box-shadow: 
     12px 12px 16px 0 rgba(0, 0, 0, 0.25),
@@ -309,7 +320,7 @@ button.search-btn:hover
  background-color:#7df572;
 }
 
-.form-box{
+.form-box {
     justify-content: center;
 }
 
@@ -351,7 +362,7 @@ button.search-btn:hover
 }
 
 
-img {
+img[name="image"] {
     border: 5px solid #488b42;
     border-radius: 15px;
 
@@ -381,7 +392,7 @@ img {
 }
 
 .grid-card2 {
-    border: 1px solid black;
+    border: 1px gray solid;
     border-radius: 15px;
     padding: 1em;
     background-color: #f5e7c0;
@@ -389,6 +400,9 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
 }
 
 .myPageContainer {
@@ -404,7 +418,6 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
 }
 
 .recipe-image{

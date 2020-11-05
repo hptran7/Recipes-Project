@@ -5,7 +5,7 @@
     </head>
 
     <body>
-        <h1>My Recipe Box</h1>
+        <img name="logoImage" src = "logo-green.png" width="300px" height="200px"/>
 
         <div class="dropdown">
         <button class="dropbtn">Menu</button>
@@ -32,7 +32,7 @@
                                             <img name="image" src = "{{picture}}" width="300px" height="200px" class='small-image'/>
                                         {{/picture}}
                                         {{^picture}}
-                                            <img src="/default.jpg" width="300px" height="200px" class='small-image'/>
+                                            <img name="image" src="/default.jpg" width="300px" height="200px" class='small-image'/>
                                         {{/picture}}
                                         <button class="deleteRecipeButton" name="deleteRecipeButton">Delete Recipe</button>         
                                 <input type="hidden" value="{{id}}" name="recipeId" />

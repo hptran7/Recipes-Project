@@ -5,20 +5,24 @@
 
     <body>
 
-        <h1>Register for a Recipe Box App Login</h1>
-        
+        <img name="logoImage" src = "title.png" width="300px" height="200px" name='logo'/>
 
-        <form method="POST" action="/register">
-            <div class="registerBar">
-                <input type="text" placeholder="Username" name="username" />
-                <input type="password" placeholder="Password" name="password" />
-                <button name="registerButton">Register</button>
-            </div>
-        </form>
         
-        <div class="registerBar2">
+        <div class="loginContainer">
+
+            <form method="POST" action="/register">
+                <div class="registerBar">
+                    <input type="text" placeholder="Username" name="username" />
+                    <input type="password" placeholder="Password" name="password" />
+                    <button name="registerButton">Register</button>
+                </div>
+            </form>
+            
+            <div class="registerBar2">
                 <h3><b>{{message}}</b></h3>
                 <a href="/">Return to Login</a>
+            </div>
+
         </div>
 
     </body>

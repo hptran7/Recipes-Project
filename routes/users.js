@@ -73,7 +73,6 @@ router.post('/guest-login', async(req,res) => {
             user_name: username
             }
     })
-    // console.log(returnUser)
 
 
     bcrypt.compare(password, returnUser.password, function (err, result) {

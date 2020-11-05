@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const models = require('../models')
 
 router.get('/', (req, res) => {
-    // console.log(req.session.user_id)
     models.Recipe.findAll({
         where: {
             user_id: req.session.user_id
@@ -74,7 +73,6 @@ router.get('/filter-course', (req,res) => {
     .then((recipes) =>{
         res.render('filter-course', {postFilter: recipes, user_id: req.session.user_id})
     })
-    // res.render('filter-course')
 })
 
 router.post('/add-recipe', (req,res) => {
@@ -104,7 +102,6 @@ router.post('/add-recipe', (req,res) => {
     })
     // Saving recipe object to the Recipe Datsbase
     recipe.save().then((savedRecipe) => {
-        // console.log('saved')
         res.redirect('/mypage')
     })
 })

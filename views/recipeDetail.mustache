@@ -5,6 +5,9 @@
 
 </head>
     <body>
+        
+        <img name="logoImage" src = "/logo-green.png" width="200px" height="100px"/>
+
         <div id="RecipeDetailsBox">
 
             <div id="detailRecipeBar">
@@ -25,12 +28,12 @@
                     </div>
                     <div>
                         <form method="POST" action="/mypage/add-recipe" id="hidden-input">
-                        <input type='hidden' value='{{title}}' name="title"></input>
-                        <input type='hidden' value='{{image}}' name="picture"></input> 
-                        <input type='hidden' value='{{cooktime}} Minutes' name="cook_time"></input> 
-                        <input type='hidden' value='{{course}}' name='course'></input> 
-                        <input type='hidden' value='{{ingredient}}' name="ingredients"></input> 
-                        <input type='hidden' value='{{instruction}}' name="directions"></input> 
+                        <input type='hidden' value='{{title}}' name="title">
+                        <input type='hidden' value='{{image}}' name="picture">
+                        <input type='hidden' value='{{cooktime}} Minutes' name="cook_time">
+                        <input type='hidden' value='{{course}}' name='course'>
+                        <input type='hidden' value='{{ingredient}}' name="ingredients">
+                        <input type='hidden' value='{{instruction}}' name="directions">
                         <input type="hidden" placeholder="Recipe URL" name="url" value='' />
                         <textarea type="text" placeholder="Notes" name="notes" rows="10" cols="60" style="background-color:white"></textarea>
                         <button name="addRecipeButton">Add Recipe to My Recipe Box</button>
