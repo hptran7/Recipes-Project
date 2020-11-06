@@ -8,7 +8,9 @@ ___
 
 ### 
 ___
-This repo serves as a guide to "Recipe Box" and gives a detailed walkthrough of the Applicaton.
+RecipeBox started as an concept from the mind of one of the major contributors to the project, Shannel Philp, a wife and mother of 3 children.
+
+With varying dietary needs and preferences for each member of the family, meal management can become a very cumbersome and taxing experience. This is where RecipeBox comes in. 
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
