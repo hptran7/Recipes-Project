@@ -121,10 +121,17 @@ RecipeBox is a simple way to help store, manage and share all of your favorite d
 ____
 <label style="margin-bottom:10%">RecipeBox allows you (login as a guest and gain) access to a vast collection of Dishes from all over the globe, seamlessly.<br/></label>
  
-<label style="margin-top:100%" > Simply input whatever eats you fancy using the search bar on the Home Page.</label>
+1. <label style="margin-top:100%" > Simply click the Guest Login button to bypass signup  
+2. Select the "Search for Recipes by Ingredients" option from the dropdown menu 
+
+ <img style="margin:1% 10% 1% 0%" src="./readmeimgs/6.png">
+
+___________
+3. Input whatever eats you fancy using the search bar on the Home Page (eg. Vegan)
+</label>
  
  
- <img style="margin:1% 10% 10% 0%" src="./readmeimgs/6.png">
+ <img style="margin:1% 10% 10% 0%" src="./readmeimgs/5.png">
 
  
  
@@ -134,23 +141,23 @@ ____
  ___
   RecipeBox will supply a slew of different options: ranging from the more traditional and mundane dishes to those with a bit of added flair. Whatever you crave you will find in RecipeBox.
 
-<img style="margin:1% 10% 10% 0%" src="./readmeimgs/7.png">
+<img style="margin:1% 10% 1% 0%" src="./readmeimgs/8.png">
 
 ___
-Creating a Free Account will generate your own personal "My Recipe Box"  enabling you to create & keep track of all your favorite personal recipes, as well as the many thousands of new recipes you will discover on RecipeBox.
+Creating a Free Account will generate your own personal Recipe Box enabling you to create & keep track of all your favorite personal recipes, as well as the many thousands of new recipes you will discover on RecipeBox.
 
-<img style="margin:1% 10% 10% 0%" src="./readmeimgs/0.png">
+<img style="margin:1% 10% 1% 0%" src="./readmeimgs/0.png">
 
 
 _____
 Adding a new Custom Recipe to your personal RecipeBox is as simple as:<br/>
  * Selecting the "Add a Recipe" option from the Left Menu.
 
-<img style="margin:1% 10% 10% 0%" src="./readmeimgs/1.png">
+<img style="margin:1% 10% 1% 0%" src="./readmeimgs/1.png">
 
 
 ___
- * Entering - your Recipe Details like: Dish Name, Cook Time, Ingredients and the like, into the approptiate field(s). <br/>
+ * Entering your Recipe Details like: Dish Name, Cook Time, Ingredients and the like, into the approptiate field(s) <br/>
 
  * and Clicking the "Add Recipe to my Recipe Box" button at the bottom of the page.
 
@@ -158,7 +165,8 @@ ___
 <img style="margin:1% 10% 10% 0%" src="./readmeimgs/2.png">
 
 
-
+<label>Voilà ! You're new creation is saved to, and readily accessible in, your personal RecipeBox!
+ </label>
 
 
 <img style="margin:1% 10% 10% 0%" src="./readmeimgs/4.png">
@@ -184,7 +192,7 @@ ___
 _**If you made it this far:**<br/><br/>
 `Thank You for viewing our readme!`_
 
-Contact information is listed below.
+Contributer Details are listed below.
 
 <!-- ## Videos and Screenshots -->
 <!--
