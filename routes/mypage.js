@@ -64,14 +64,14 @@ router.get('/recipe-detail/:recipeId', (req,res) => {
 })
 
 router.get('/filter-course', (req,res) => {
-    console.log(req.session.user_id)
+
     models.Recipe.findAll({
-        where: {
-            user_id: req.session.user_id
-            }
+        // where: {
+        //     user_id: req.session.user_id
+        //     }
     })
     .then((recipes) =>{
-        res.render('filter-course', {postFilter: recipes, user_id: req.session.user_id})
+        res.render('filter-course', {postFilter: recipes}) /*, user_id: req.session.user_id}*/
     })
 })
 

@@ -3,6 +3,9 @@ body {
     display: flex;
     flex-direction: column;
     background-image: url('/images/kitchen.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: x-large;
 }
 
 img[name="logoImage"] {
