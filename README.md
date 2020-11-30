@@ -53,7 +53,9 @@ ___
 * [JavaScript](https://javascript.com)
 * [NodeJS/Express](expressjs.com)
 * [Mustache Express]()
-____
+* [PostgresSQL]()
+* [Sequelize]()
+* [RESTFUL-API]()____
 <!-- 
 * []() not the above example of how to link in Markdown.
 -->
