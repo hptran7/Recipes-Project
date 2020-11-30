@@ -39,7 +39,6 @@ RecipeBox started as an concept from the mind of one of the major contributors t
 With varying dietary needs and preferences for each member of the family, meal management can become a very cumbersome and taxing experience. This is where RecipeBox comes in. 
 -->
 
-I put this together to show what a detailed README is like. This README is written and styled in Markdown.  You can edit this eitehr in the browser or your code editor. VScode does have a Markdown extension which will show you the syntax highlighting.
 
 <img src="./readmeimgs/title.png">
 
@@ -114,7 +113,7 @@ The main component needed to run RecipeBox is Node.js
 
 RecipeBox is a simple way to help store, manage and share all of your favorite dishes.<br>
 
-<img style="margin:1% 10% 5% 0%" src="./readmeimgs/00.png">
+<img style="margin:1% 10% 5% 0%" src="./readmeimgs/home.png">
 <!-- Blah --->
 
 
@@ -123,27 +122,25 @@ RecipeBox is a simple way to help store, manage and share all of your favorite d
 ____
 <label style="margin-bottom:10%">RecipeBox allows you (login as a guest and gain) access to a vast collection of Dishes from all over the globe, seamlessly.<br/></label>
  
-1. <label style="margin-top:100%" > Simply click the Guest Login button to bypass signup  
+1. <label style="margin-top:100%" > Simply click the Guest Login button to bypass signup
+ 
+  <img style="margin:1% 10% 1% 0%" src="./readmeimgs/RecipeBox.png">
+ 
 2. Select the "Search for Recipes by Ingredients" option from the dropdown menu 
 
- <img style="margin:1% 10% 1% 0%" src="./readmeimgs/6.png">
+ <img style="margin:1% 10% 1% 0%" src="./readmeimgs/search.png">
 
 ___________
-3. Input whatever eats you fancy using the search bar on the Home Page (eg. Vegan)
+3. Input whatever eats your fancy using the search bar at the top of the page (eg. Chicken)
 </label>
  
  
- <img style="margin:1% 10% 10% 0%" src="./readmeimgs/5.png">
-
- 
- 
- 
- 
+ <img style="margin:1% 10% 10% 0%" src="./readmeimgs/chicken.png">
  
  ___
-  RecipeBox will supply a slew of different options: ranging from the more traditional and mundane dishes to those with a bit of added flair. Whatever you crave you will find in RecipeBox.
+ Click on the Recipe Details button to view the Recipe Ingredients, Directions and other recipe details.
 
-<img style="margin:1% 10% 1% 0%" src="./readmeimgs/8.png">
+<img style="margin:1% 10% 1% 0%" src="./readmeimgs/details.png">
 
 ___
 Creating a Free Account will generate your own personal Recipe Box enabling you to create & keep track of all your favorite personal recipes, as well as the many thousands of new recipes you will discover on RecipeBox.
@@ -227,7 +224,7 @@ ___
 - Adebowale O. -----https://github.com/AOLink
 <br/><br/>
 
-Project Link: [https://github.com/hptran7/Recipes-Project](https://github.com/hptran7/Recipes-Project)
+Project Link: [https://dc-recipebox.herokuapp.com](https://dc-recipebox.herokuapp.com)
 
 
 ___
@@ -238,8 +235,7 @@ ___
  
   - **Nathan Orris** - **The Certified** [!- **DiR at DigitalCrafts Houston** -
     [NathanNoSudo](https://github.com/NathanNoSudo)
- - **Othneildrew**  -
-    [OthneilDrew](https://github.com/othneildrew)
+
 
 
 
