@@ -233,7 +233,7 @@ ___
 
 *  Azam Sharp- Digital Crafts Instructor
  
-  - **Nathan Orris** - **The Certified** [!- **DiR at DigitalCrafts Houston** -
+  - **Nathan Orris** - **The Certified** [!- **DiR at DigitalCrafts Houston**] -
     [NathanNoSudo](https://github.com/NathanNoSudo)
 
 
