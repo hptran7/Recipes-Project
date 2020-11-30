@@ -57,6 +57,7 @@ ___
 * [Sequelize]()
 * [RESTFUL-API]()
 
+___
 <!-- 
 * []() not the above example of how to link in Markdown.
 -->
