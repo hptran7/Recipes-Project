@@ -55,7 +55,8 @@ ___
 * [Mustache Express]()
 * [PostgresSQL]()
 * [Sequelize]()
-* [RESTFUL-API]()____
+* [RESTFUL-API]()
+
 <!-- 
 * []() not the above example of how to link in Markdown.
 -->
